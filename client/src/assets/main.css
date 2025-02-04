@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbars in WebKit browsers (e.g., Chrome, Safari) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars in other browsers */
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Optional: Ensure the content is scrollable without visible scrollbars */
+html, body {
+  overflow: auto;
+}
+:root {
+	--color-primary: #101010;
+	--color-secondary: #00ff00;
+}
