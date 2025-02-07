@@ -1,0 +1,88 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String    @id // Will use Clerk's user ID
+  email         String    @unique
+  name          String?
+  clerkId       String    @unique // Store Clerk's user ID
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  jobs          Job[]
+  applications  Application[]
+  company       Company?  @relation(fields: [companyId], references: [id])
+  companyId     String?
+}
+
+model Job {
+  id          String   @id @default(cuid())
+  title       String
+  type        JobType  // Changed from String to JobType
+  description String
+  salary        String
+  location      String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  published     Boolean   @default(true)
+  
+  // Relations
+  company       Company   @relation(fields: [companyId], references: [id])
+  companyId     String
+  postedBy      User      @relation(fields: [userId], references: [id])
+  userId        String
+  applications  Application[]
+}
+
+model Company {
+  id            String    @id @default(cuid())
+  name          String
+  description   String?
+  contactEmail  String
+  contactPhone  String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  jobs          Job[]
+  employees     User[]
+}
+
+model Application {
+  id            String    @id @default(cuid())
+  status        ApplicationStatus @default(PENDING)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  job           Job       @relation(fields: [jobId], references: [id])
+  jobId         String
+  applicant     User      @relation(fields: [userId], references: [id])
+  userId        String
+}
+
+enum Role {
+  USER
+  EMPLOYER
+  ADMIN
+}
+
+enum ApplicationStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
+// Add this enum
+enum JobType {
+  FULL_TIME
+  PART_TIME
+  INTERNSHIP
+  REMOTE
+}
