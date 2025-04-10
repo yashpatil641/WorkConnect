@@ -186,9 +186,9 @@ const viewApplication = (applicationId) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+  <div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 py-20 px-4 ">
     <!-- Header Section -->
-    <div class="bg-gradient-to-b from-green-900/20 to-transparent py-10 px-4">
+    <div class="py-10 px-4">
       <div class="max-w-5xl mx-auto text-center mt-16">
         <h1 class="text-3xl font-bold text-green-500 mb-3 animate-fade-in">
           My Applications

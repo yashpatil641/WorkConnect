@@ -39,22 +39,31 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="min-h-screen bg-primary">
-    <!-- Hero Section with reduced padding -->
-    <div class="bg-gradient-to-b from-green-900/20 to-transparent py-10 px-4">
-      <div class="max-w-3xl mx-auto text-center mt-16">
+  <div class="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <!-- Header Section -->
+    <div class=" py-10 px-4">
+      <div class="max-w-5xl mx-auto text-center mt-16">
         <h1 class="text-3xl font-bold text-green-500 mb-3 animate-fade-in">
           Manage Your Job Listings
         </h1>
+        <p class="text-gray-400 mb-6 max-w-2xl mx-auto">
+          Create, edit and track all of your posted job opportunities
+        </p>
+        
         <RouterLink 
           to="/jobs/add"
-          class="inline-block bg-green-700 hover:bg-green-800 text-white font-medium px-4 py-1.5 text-sm rounded-lg transition-colors duration-300 mb-6 mt-6"
+          class="inline-block bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-medium px-6 py-2 rounded-lg transition-all duration-300 mb-6 mt-2 transform hover:scale-105"
         >
-          Post New Job
+          <span class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Post New Job
+          </span>
         </RouterLink>
         
-        <!-- Compact Search and Filter -->
-        <div class="flex flex-col md:flex-row gap-3 justify-center items-center ">
+        <!-- Search and Filter -->
+        <div class="flex flex-col md:flex-row gap-3 justify-center items-center mt-8">
           <input 
             v-model="searchQuery"
             type="text"
@@ -63,7 +72,7 @@ onMounted(async () => {
           >
           <select 
             v-model="selectedType"
-            class="w-full md:w-36 px-3 py-1.5 text-sm rounded-lg bg-white/10 border border-green-500/30 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300"
+            class="w-full md:w-40 px-3 py-1.5 text-sm rounded-lg bg-white/10 border border-green-500/30 text-white focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 appearance-none"
           >
             <option v-for="type in jobTypes" :key="type" :value="type">
               {{ type.replace('_', ' ') }}
@@ -73,16 +82,16 @@ onMounted(async () => {
       </div>
     </div>
 
-    <!-- Compact Jobs Grid -->
-    <div class="container mx-auto px-3 py-6">
-      <div v-if="state.isLoading" class="flex justify-center items-center py-8">
+    <!-- Jobs Grid -->
+    <div class="container mx-auto px-4 py-10">
+      <div v-if="state.isLoading" class="flex justify-center items-center py-20">
         <PulseLoader color="#22c55e" size="8px" />
       </div>
       
       <TransitionGroup 
         name="job-list" 
         tag="div" 
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         <JobListing 
           v-for="job in filteredJobs" 
@@ -94,13 +103,16 @@ onMounted(async () => {
       </TransitionGroup>
 
       <div v-if="!state.isLoading && filteredJobs.length === 0" 
-           class="text-center py-8 animate-fade-in">
-        <div class="bg-white/10 rounded-lg p-6 max-w-sm mx-auto">
-          <h3 class="text-lg text-white mb-2">No Jobs Posted Yet</h3>
-          <p class="text-green-400 mb-3 text-sm">Start by posting your first job listing</p>
+           class="flex flex-col items-center justify-center py-20">
+        <div class="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/10 max-w-md text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500/50 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <h3 class="text-xl font-semibold text-white mb-2">No Jobs Posted Yet</h3>
+          <p class="text-gray-400 mb-6">Start by posting your first job listing</p>
           <RouterLink 
             to="/jobs/add"
-            class="inline-block bg-green-500 hover:bg-green-600 text-white px-4 py-1.5 text-sm rounded-lg transition-colors duration-300"
+            class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300"
           >
             Post a Job
           </RouterLink>
@@ -109,7 +121,6 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
 <style scoped>
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in;

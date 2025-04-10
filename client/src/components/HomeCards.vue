@@ -3,15 +3,15 @@ import { RouterLink } from 'vue-router';
 </script>
 
 <template>
-  <div class=" px-4 mt-24 ">
+  <div class="px-4 mt-24">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Find Jobs Card -->
         <RouterLink to="/alljobs" class="group">
-          <div class="bg-gradient-to-br  from-white/5 to-white/10 hover:from-white/10 hover:to-white/15 
-                      rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 
-                      border border-white/5 min-h-32 items-center  flex flex-col justify-center">
-            <div class="flex items-start space-x-4">
+          <div class="bg-gradient-to-br from-white/5 to-white/10 hover:from-white/10 hover:to-white/15 
+                      rounded-xl p-6 transition-all duration-300 
+                      border border-white/5 min-h-[120px] flex items-start">
+            <div class="flex items-start space-x-4 w-full">
               <div class="bg-green-500/20 p-3 rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
@@ -30,9 +30,9 @@ import { RouterLink } from 'vue-router';
         <!-- Post Job Card -->
         <RouterLink to="/jobs/add" class="group">
           <div class="bg-gradient-to-br from-white/5 to-white/10 hover:from-white/10 hover:to-white/15 
-                      rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 
-                      border border-white/5 min-h-32 flex items-center flex-col justify-center">
-            <div class="flex items-start space-x-4">
+                      rounded-xl p-6 transition-all duration-300 
+                      border border-white/5 min-h-[120px] flex items-start">
+            <div class="flex items-start space-x-4 w-full">
               <div class="bg-green-500/20 p-3 rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
@@ -41,8 +41,7 @@ import { RouterLink } from 'vue-router';
                 </svg>
               </div>
               <div class="flex-1">
-                <h3 class="text-xl font-semibold text-white group-hover:text-green-400 transition-colors">Post a Job
-                </h3>
+                <h3 class="text-xl font-semibold text-white group-hover:text-green-400 transition-colors">Post a Job</h3>
                 <p class="text-gray-400 mt-2 text-sm line-clamp-2">Create and manage job listings</p>
               </div>
             </div>
@@ -52,9 +51,9 @@ import { RouterLink } from 'vue-router';
         <!-- Track Applications Card -->
         <RouterLink to="/applications" class="group">
           <div class="bg-gradient-to-br from-white/5 to-white/10 hover:from-white/10 hover:to-white/15 
-                      rounded-xl p-6 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 
-                      border border-white/5 min-h-32 flex flex-col justify-center">
-            <div class="flex items-start space-x-4">
+                      rounded-xl p-6 transition-all duration-300 
+                      border border-white/5 min-h-[120px] flex items-start">
+            <div class="flex items-start space-x-4 w-full">
               <div class="bg-green-500/20 p-3 rounded-lg min-w-[48px] min-h-[48px] flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
@@ -63,8 +62,7 @@ import { RouterLink } from 'vue-router';
                 </svg>
               </div>
               <div class="flex-1">
-                <h3 class="text-xl font-semibold text-white group-hover:text-green-400 transition-colors">Track
-                  Applications</h3>
+                <h3 class="text-xl font-semibold text-white group-hover:text-green-400 transition-colors">Track Applications</h3>
                 <p class="text-gray-400 mt-2 text-sm line-clamp-2">Monitor your job application status</p>
               </div>
             </div>

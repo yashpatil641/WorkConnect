@@ -1,3 +1,28 @@
+<script setup>
+import { ref, computed } from 'vue';
+import { useAuth, useUser, UserButton, SignInButton, SignIn } from '@clerk/vue';
+import { useRoute } from 'vue-router';
+import logo from 'C:/Users/Yash/Desktop/projects/WorkConnect/client/public/favicon.svg';
+
+const { isSignedIn } = useAuth();
+const { user } = useUser();
+const route = useRoute();
+const isOpen = ref(false);
+
+const username = computed(() => user.value?.username || user.value?.firstName || 'User');
+
+const navItems = [
+  { path: '/', label: 'Home' },
+  { path: '/alljobs', label: 'Browse Jobs' },
+  { path: '/applications', label: 'Applications' },
+  { path: '/myjobs', label: 'Posted Jobs' },
+];
+
+const isActiveLink = (path) => route.path === path;
+</script>
+
+
+
 <template>
   <nav class="fixed w-full z-50 backdrop-blur-lg bg-black/30 supports-backdrop-blur:bg-white/10">
     <div class="max-w-7xl mx-auto">
@@ -7,7 +32,7 @@
         <div class="">
           <img :src="logo" alt="Logo" class="h-10  transition-transform duration-200" />
         </div>
-        <div class="hidden md:flex flex-col  ml-3">
+        <div class="flex flex-col  ml-3">
           <span class="text-white text-md font-bold leading-tight group-hover:text-green-400 transition-colors">Work</span>
           <span class="text-white text-md font-bold leading-tight group-hover:text-green-400 transition-colors duration-500">Connect</span>
         </div>
@@ -103,26 +128,3 @@
   </nav>
 </template>
 
-
-<script setup>
-import { ref, computed } from 'vue';
-import { useAuth, useUser, UserButton, SignInButton, SignIn } from '@clerk/vue';
-import { useRoute } from 'vue-router';
-import logo from 'C:/Users/Yash/Desktop/projects/WorkConnect/client/public/favicon.svg';
-
-const { isSignedIn } = useAuth();
-const { user } = useUser();
-const route = useRoute();
-const isOpen = ref(false);
-
-const username = computed(() => user.value?.username || user.value?.firstName || 'User');
-
-const navItems = [
-  { path: '/', label: 'Home' },
-  { path: '/alljobs', label: 'Browse Jobs' },
-  { path: '/applications', label: 'Applications' },
-  { path: '/myjobs', label: 'Posted Jobs' },
-];
-
-const isActiveLink = (path) => route.path === path;
-</script>
