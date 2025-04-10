@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useAuth, useUser, UserButton, SignInButton, SignIn } from '@clerk/vue';
 import { useRoute } from 'vue-router';
-import logo from 'C:/Users/Yash/Desktop/projects/WorkConnect/client/public/favicon.svg';
+import logo from '/favicon.svg';
 
 const { isSignedIn } = useAuth();
 const { user } = useUser();
