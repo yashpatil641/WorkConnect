@@ -2,15 +2,16 @@
   <nav class="fixed w-full z-50 backdrop-blur-lg bg-black/30 supports-backdrop-blur:bg-white/10">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between h-16 px-4 border-b border-white/10">
-        <!-- Logo Section -->
-        <RouterLink to="/" class="flex items-center group">
-          <div class="">
-            <img :src="logo" alt="Logo" class="h-10 w-10 group-hover:scale-110 transition-transform duration-200" />
-          </div>
-          <span class="hidden md:block text-white text-lg font-bold ml-3 group-hover:text-green-400 transition-colors">
-            Work Connect
-          </span>
-        </RouterLink>
+
+      <RouterLink to="/" class="flex items-center group">
+        <div class="">
+          <img :src="logo" alt="Logo" class="h-10  transition-transform duration-200" />
+        </div>
+        <div class="hidden md:flex flex-col  ml-3">
+          <span class="text-white text-md font-bold leading-tight group-hover:text-green-400 transition-colors">Work</span>
+          <span class="text-white text-md font-bold leading-tight group-hover:text-green-400 transition-colors duration-500">Connect</span>
+        </div>
+      </RouterLink>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-1">
@@ -107,7 +108,7 @@
 import { ref, computed } from 'vue';
 import { useAuth, useUser, UserButton, SignInButton, SignIn } from '@clerk/vue';
 import { useRoute } from 'vue-router';
-import logo from '@/assets/img/logo.png';
+import logo from 'C:/Users/Yash/Desktop/projects/WorkConnect/client/public/favicon.svg';
 
 const { isSignedIn } = useAuth();
 const { user } = useUser();
@@ -118,8 +119,9 @@ const username = computed(() => user.value?.username || user.value?.firstName ||
 
 const navItems = [
   { path: '/', label: 'Home' },
-  { path: '/alljobs', label: 'Jobs' },
-  { path: '/options', label: 'Dashboard' },
+  { path: '/alljobs', label: 'Browse Jobs' },
+  { path: '/applications', label: 'Applications' },
+  { path: '/myjobs', label: 'Posted Jobs' },
 ];
 
 const isActiveLink = (path) => route.path === path;
