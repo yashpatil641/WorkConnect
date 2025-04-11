@@ -6,7 +6,6 @@ import JobView from '@/views/JobView.vue';
 import AddJobView from '@/views/AddJobView.vue';
 import EditJobView from '@/views/EditJobView.vue';
 import SignInView from '@/views/SignInView.vue';
-import optionsview from '@/views/optionsView.vue';
 import myjobsview from '@/views/MyJobsView.vue';
 import registerView from '@/views/RegisterView.vue';
 import ApplyJobView from '@/views/ApplyJobView.vue'
@@ -71,11 +70,6 @@ const router = createRouter({
       path: '/signin',
       name: 'sign-in',
       component: SignInView,
-    },
-    {
-      path: '/options',
-      name: 'options',
-      component: optionsview,
     },
     {
       path: '/myjobs',
