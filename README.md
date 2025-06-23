@@ -17,9 +17,3 @@ WorkConnect is a full-stack job board application built with Vue.js and Node.js.
 - **Database**: PostgreSQL (Neon PostgreSQL)
 - **ORM**: Prisma
 - **Authentication**: Clerk
-
-
-
-thimg to do 
-- when not signed in go o register page (middleaware adding)
-- 
